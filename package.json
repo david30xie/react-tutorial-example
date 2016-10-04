@@ -1,0 +1,42 @@
+{
+  "name": "react-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "david30xie",
+  "license": "ISC",
+  "scripts": {
+    "watchify": "watchify -vd -p browserify-hmr -e src/index.js -o build/app.js",
+    "serve": "http-server -o -s -c 1 -a localhost -p 8000",
+    "dev": "npm-run-all --parallel watchify serve",
+    "build": "browserify src/index.js | uglifyjs -mc warnings=false > build/app.js"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "react"
+          ]
+        }
+      ]
+    ]
+  },
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.17.0",
+    "babel-preset-react": "^6.16.0",
+    "babelify": "^7.3.0",
+    "browserify-hmr": "^0.3.5",
+    "http-server": "^0.9.0",
+    "npm-run-all": "^3.1.0",
+    "remarkable": "^1.7.1",
+    "uglify-js": "^2.7.3",
+    "watchify": "^3.7.0"
+  }
+}
